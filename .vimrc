@@ -116,6 +116,8 @@ au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 
 " ファイルをtree表示してくれる
 NeoBundle 'scrooloose/nerdtree'
+"nerdtreeのショートカット「ctrl+e」を設定
+nnoremap <silent><C-e> :NERDTreeToggle<CR>
 
 " Gitを便利に使う-----------------------------
 NeoBundle 'tpope/vim-fugitive'
