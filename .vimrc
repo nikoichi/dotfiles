@@ -154,16 +154,6 @@ NeoBundle 'bronson/vim-trailing-whitespace'
 " vimrc に追記＆再読込して :NeoBundleInstall
 NeoBundle 'altercation/vim-colors-solarized'
 
-
-
-
-
-
-
-
-
-
-
 call neobundle#end()
 
 " If there are uninstalled bundles found on startup,
