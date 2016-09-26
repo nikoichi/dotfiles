@@ -142,9 +142,9 @@ NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'tpope/vim-surround'
 
 " インデントに色を付けて見やすくする--------------------------
-NeoBundle 'nathanaelkane/vim-indent-guides'
+" NeoBundle 'nathanaelkane/vim-indent-guides'
 " vimを立ち上げたときに、自動的にvim-indent-guidesをオンにする
-let g:indent_guides_enable_on_vim_startup = 1
+" let g:indent_guides_enable_on_vim_startup = 1
 "--------------------------------------------------------------
 
 " ログファイルを色づけしてくれる
@@ -155,6 +155,12 @@ NeoBundle 'bronson/vim-trailing-whitespace'
 
 " vimrc に追記＆再読込して :NeoBundleInstall
 NeoBundle 'altercation/vim-colors-solarized'
+
+"vimのコメントアウトを「Ctrl+k」でできるように設定
+NeoBundle "tyru/caw.vim.git"
+nmap <C-K> <Plug>(caw:i:toggle)
+vmap <C-K> <Plug>(caw:i:toggle)
+"------------------------------------------------
 
 call neobundle#end()
 
@@ -234,9 +240,10 @@ if has("autocmd")
 endif
 """"""""""""""""""""""""""""""
 
-"vimをsolarized色に！-------------------
+"vimをMolokai色に！-------------------
 syntax enable
-set background=dark
-colorscheme solarized
-let g:solarized_termcolors=256
+let g:molokai_original = 1
+" molokai のビジュアルモードが見辛いので色を変える
+autocmd colorscheme molokai highlight Visual ctermbg=8
+colorscheme molokai  " カラースキーマ molokai 指定
 "--------------------------------------
