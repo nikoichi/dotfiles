@@ -21,7 +21,7 @@ set smartcase
 set wrapscan
 set incsearch
 set hlsearch
-
+set ic
 "----------------------------------------
 " 表示設定
 "----------------------------------------
@@ -142,9 +142,13 @@ NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'tpope/vim-surround'
 
 " インデントに色を付けて見やすくする--------------------------
-" NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'nathanaelkane/vim-indent-guides'
 " vimを立ち上げたときに、自動的にvim-indent-guidesをオンにする
-" let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_enable_on_vim_startup = 1
+"htlpとnerdtreeでvim-indent-guidesをオフにする。
+let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
+"インデントのガイドを少し細くする。
+let g:indent_guides_guide_size = 1
 "--------------------------------------------------------------
 
 " ログファイルを色づけしてくれる
