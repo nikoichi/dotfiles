@@ -16,12 +16,19 @@ filetype plugin indent on
 "----------------------------------------
 " 検索
 "----------------------------------------
-set ignorecase
-set smartcase
+set ignorecase "検索で大文字小文字を区別しない
+set smartcase "検索パターンに大文字がある場合ignorecaseをキャンセル
 set wrapscan
 set incsearch
 set hlsearch
 set ic
+"検索のハイライトを無効化するためのショートカット
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+"----------------------------------------
+" 自動補完
+"----------------------------------------
+set infercase
+
 "----------------------------------------
 " 表示設定
 "----------------------------------------
@@ -165,6 +172,8 @@ NeoBundle "tyru/caw.vim.git"
 nmap <C-K> <Plug>(caw:i:toggle)
 vmap <C-K> <Plug>(caw:i:toggle)
 "------------------------------------------------
+"vimのhelpを日本語に！
+NeoBundle 'vim-jp/vimdoc-ja'
 
 call neobundle#end()
 
