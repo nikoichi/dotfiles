@@ -6,7 +6,7 @@ set nowritebackup
 set nobackup
 
 set virtualedit=block
-set whichwrap=b,s,[,],<,>
+set whichwrap=b,s,h,l,<,>,[,],~
 set backspace=indent,eol,start
 set ambiwidth=double
 set wildmenu
@@ -45,6 +45,14 @@ set display=lastline
 set list
 set listchars=tab:^\ ,trail:~
 set history=10000
+
+"ファイル表示の<C-g>を編集、フルパス表示に------
+nnoremap <C-g> 1<C-g>
+"ウィンドウ意を移動しても消えないように。
+augroup EchoFilePath
+  autocmd WinEnter * execute "normal! 1\<C-g>"
+augroup END
+"-----------------------------------------------
 
 "--
 " from fujimura
@@ -175,6 +183,18 @@ vmap <C-K> <Plug>(caw:i:toggle)
 "vimのhelpを日本語に！
 NeoBundle 'vim-jp/vimdoc-ja'
 
+"vimを使っているデザイナー向けプラグイン----------------------
+" "http://qiita.com/alpaca_taichou/items/056a4c42fe7a928973e6
+" NeoBundle 'mattn/emmet-vim'
+" NeoBundle 'taichouchou2/surround.vim'
+" NeoBundle 'open-browser.vim'
+" NeoBundle 'mattn/webapi-vim'
+" NeoBundle 'tell-k/vim-browsereload-mac'
+" NeoBundle 'hail2u/vim-css3-syntax'
+" NeoBundle 'taichouchou2/html5.vim'
+" NeoBundle 'taichouchou2/vim-javascript'
+NeoBundle 'kchmck/vim-coffee-script'
+"-------------------------------------------------------------
 call neobundle#end()
 
 " If there are uninstalled bundles found on startup,
