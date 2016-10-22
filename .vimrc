@@ -195,6 +195,10 @@ NeoBundle 'vim-jp/vimdoc-ja'
 " NeoBundle 'taichouchou2/vim-javascript'
 NeoBundle 'kchmck/vim-coffee-script'
 "-------------------------------------------------------------
+
+"貼り付け時自動でpaste modeにする
+NeoBundle 'ConradIrwin/vim-bracketed-paste'
+
 call neobundle#end()
 
 " If there are uninstalled bundles found on startup,
