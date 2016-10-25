@@ -284,3 +284,17 @@ let g:molokai_original = 1
 autocmd colorscheme molokai highlight Visual ctermbg=8
 colorscheme molokai  " カラースキーマ molokai 指定
 "--------------------------------------
+
+"coffeeに必要な設定、便利な設定-------------------------------
+" vimにcoffeeファイルタイプを認識させる
+au BufRead,BufNewFile,BufReadPre *.coffee   set filetype=coffee
+" インデントを設定
+autocmd FileType coffee     setlocal sw=2 sts=2 ts=2 et
+" オートコンパイル
+  "保存と同時にコンパイルする
+autocmd BufWritePost *.coffee silent make! 
+  "エラーがあったら別ウィンドウで表示
+autocmd QuickFixCmdPost * nested cwindow | redraw! 
+" Ctrl-cで右ウィンドウにコンパイル結果を一時表示する
+nnoremap <silent> <C-C> :CoffeeCompile vert <CR><C-w>h
+"------------------------------------------------------------
