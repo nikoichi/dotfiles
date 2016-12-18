@@ -1,3 +1,9 @@
+set encoding=utf-8
+scriptencoding utf-8
+" ↑1行目は読み込み時の文字コードの設定
+" ↑2行目はVim Script内でマルチバイトを使う場合の設定
+" Vim scritptにvimrcも含まれるので、日本語でコメントを書く場合は先頭にこの設定が必要になる
+
 set nocompatible
 
 filetype off
@@ -6,12 +12,23 @@ set nowritebackup
 set nobackup
 
 set virtualedit=block
-set whichwrap=b,s,h,l,<,>,[,],~
-set backspace=indent,eol,start
 set ambiwidth=double
-set wildmenu
 
 filetype plugin indent on
+
+"----------------------------------------
+" カーソル移動
+"----------------------------------------
+set whichwrap=b,s,h,l,<,>,[,],~ "カーソルの左右移動で行末から次の行の行頭への移動が可能になる
+set number " 行番号を表示
+" set cursorline " カーソルラインをハイライト → これをONにしたら移動がメッチャ重くなったのでOFFに。
+" 行が折り返し表示されていた場合、行単位ではなく表示行単位でカーソルを移動する
+nnoremap j gj
+nnoremap k gk
+nnoremap <down> gj
+nnoremap <up> gk
+" バックスペースキーの有効化
+set backspace=indent,eol,start
 
 "----------------------------------------
 " 検索
@@ -19,15 +36,18 @@ filetype plugin indent on
 set ignorecase "検索で大文字小文字を区別しない
 set smartcase "検索パターンに大文字がある場合ignorecaseをキャンセル
 set wrapscan
-set incsearch
-set hlsearch
+set incsearch "インクリメンタルサーチ. １文字入力毎に検索を行う
+set hlsearch "検索結果をハイライト
 set ic
-"検索のハイライトを無効化するためのショートカット
-nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+"検索のハイライトをon/offするためのショートカット
+nnoremap <silent> <C-l> :<C-u>set nohlsearch!<CR><C-l>
 "----------------------------------------
 " 自動補完
 "----------------------------------------
 set infercase
+
+set wildmenu " コマンドモードの補完
+set history=5000 " 保存するコマンド履歴の数
 
 "----------------------------------------
 " 表示設定
@@ -36,15 +56,15 @@ set noerrorbells
 set novisualbell
 set visualbell t_vb=
 set shellslash
-"set showmatch matchtime=1
 set cinoptions+=:0
 set cmdheight=2
-set laststatus=2
 set showcmd
 set display=lastline
 set list
 set listchars=tab:^\ ,trail:~
-set history=10000
+
+set showmatch " 括弧の対応関係を一瞬表示する
+source $VIMRUNTIME/macros/matchit.vim " Vimの「%」を拡張する カッコ・タグジャンプ
 
 "ファイル表示の<C-g>を編集、フルパス表示に------
 nnoremap <C-g> 1<C-g>
@@ -72,7 +92,6 @@ set nobackup
 set noswapfile
 set nofoldenable
 set title
-set number
 set whichwrap=4
 
 "vimでクリップボードが使えるように設定。
@@ -144,13 +163,28 @@ set statusline+=%{fugitive#statusline()}
 filetype plugin indent on
 "---------------------------------------------
 
+
+" ステータスラインの表示内容強化---------------------------
+NeoBundle 'itchyny/lightline.vim'
+"ステータスラインの設定------------------------------------
+set laststatus=2 " ステータスラインを常に表示
+set showmode " 現在のモードを表示
+set showcmd " 打ったコマンドをステータスラインの下に表示
+set ruler " ステータスラインの右側にカーソルの現在位置を表示する
+"----------------------------------------------------------
+
+"vim-powerlineのインストール
+NeoBundle 'Lokaltog/vim-powerline'
+"vim-powerlineの設定-------------------------------------------
+let g:Powerline_symbols = 'fancy'
+
 " Rails向けのコマンドを提供する
 NeoBundle 'tpope/vim-rails'
 
 " Ruby向けにendを自動挿入してくれる
 NeoBundle 'tpope/vim-endwise'
 
-" コメントON/OFFを手軽に実行
+" コメントO
 NeoBundle 'tomtom/tcomment_vim'
 
 " シングルクオートとダブルクオートの入れ替え等
@@ -202,6 +236,37 @@ NeoBundle 'kchmck/vim-coffee-script'
 
 "貼り付け時自動でpaste modeにする
 NeoBundle 'ConradIrwin/vim-bracketed-paste'
+
+" neocomplete・neosnippet・neosnippet-snippetsのインストール***********************
+if has('lua') " lua機能が有効になっている場合・・・・・・①
+    " コードの自動補完
+    NeoBundle 'Shougo/neocomplete.vim'
+    " スニペットの補完機能
+    NeoBundle "Shougo/neosnippet"
+    " スニペット集
+    NeoBundle 'Shougo/neosnippet-snippets'
+endif
+
+"----------------------------------------------------------
+" neocomplete・neosnippetの設定
+"----------------------------------------------------------
+if neobundle#is_installed('neocomplete.vim')
+    " Vim起動時にneocompleteを有効にする
+    let g:neocomplete#enable_at_startup = 1
+    " smartcase有効化. 大文字が入力されるまで大文字小文字の区別を無視する
+    let g:neocomplete#enable_smart_case = 1
+    " 3文字以上の単語に対して補完を有効にする
+    let g:neocomplete#min_keyword_length = 3
+    " 区切り文字まで補完する
+    let g:neocomplete#enable_auto_delimiter = 1
+    " 1文字目の入力から補完のポップアップを表示
+    let g:neocomplete#auto_completion_start_length = 1
+    " バックスペースで補完のポップアップを閉じる
+    inoremap <expr><BS> neocomplete#smart_close_popup()."<C-h>"
+    " タブキーで補完候補の選択. スニペット内のジャンプもタブキーでジャンプ
+    imap <expr><TAB> pumvisible() ? "<C-n>" : neosnippet#jumpable() ? "<Plug>(neosnippet_expand_or_jump)" : "<TAB>"
+endif
+" neocomplete・neosnippet・neosnippet-snippets終了！******************************
 
 call neobundle#end()
 
@@ -281,6 +346,34 @@ if has("autocmd")
 endif
 """"""""""""""""""""""""""""""
 
+"マウスの有効化-------------------------
+if has('mouse')
+    set mouse=a
+    if has('mouse_sgr')
+        set ttymouse=sgr
+    elseif v:version > 703 || v:version is 703 && has('patch632')
+        set ttymouse=sgr
+    else
+        set ttymouse=xterm2
+    endif
+endif
+"-------------------------------------end
+
+"クリップボードからペーストする時だけインデントしないように---
+if &term =~ "xterm"
+    let &t_SI .= "\e[?2004h"
+    let &t_EI .= "\e[?2004l"
+    let &pastetoggle = "\e[201~"
+
+    function XTermPasteBegin(ret)
+        set paste
+        return a:ret
+    endfunction
+
+    inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
+endif
+"------------------------------------------------------------end
+
 "vimをMolokai色に！-------------------
 syntax enable
 let g:molokai_original = 1
@@ -302,3 +395,66 @@ autocmd QuickFixCmdPost * nested cwindow | redraw!
 " Ctrl-cで右ウィンドウにコンパイル結果を一時表示する
 nnoremap <silent> <C-C> :CoffeeCompile vert <CR><C-w>h
 "------------------------------------------------------------
+
+" lightline.vimの設定----------------------------------------------------------
+let g:lightline = {
+      \ 'colorscheme': 'landscape',
+      \ 'mode_map': { 'c': 'NORMAL' },
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+      \ },
+      \ 'component_function': {
+      \   'modified': 'LightlineModified',
+      \   'readonly': 'LightlineReadonly',
+      \   'fugitive': 'LightlineFugitive',
+      \   'filename': 'LightlineFilename',
+      \   'fileformat': 'LightlineFileformat',
+      \   'filetype': 'LightlineFiletype',
+      \   'fileencoding': 'LightlineFileencoding',
+      \   'mode': 'LightlineMode',
+      \ },
+      \ 'separator': { 'left': '⮀', 'right': '⮂' },
+      \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
+      \ }
+
+function! LightlineModified()
+  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! LightlineReadonly()
+  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '⭤' : ''
+endfunction
+
+function! LightlineFilename()
+  return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
+        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+        \  &ft == 'unite' ? unite#get_status_string() :
+        \  &ft == 'vimshell' ? vimshell#get_status_string() :
+        \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+        \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
+endfunction
+
+function! LightlineFugitive()
+  if &ft !~? 'vimfiler\|gundo' && exists("*fugitive#head")
+    let branch = fugitive#head()
+    return branch !=# '' ? '⭠ '.branch : ''
+  endif
+  return ''
+endfunction
+
+function! LightlineFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! LightlineFiletype()
+  return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
+endfunction
+
+function! LightlineFileencoding()
+  return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
+endfunction
+
+function! LightlineMode()
+  return winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+"----------------------------------------------------------------------------end

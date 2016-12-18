@@ -377,13 +377,13 @@
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>2576 429 606 456 1280 64 1920 1080 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>1557 284 937 465 1280 65 1920 1080 </string>
+	<string>1695 196 918 512 1280 65 1920 1080 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>1864 440 570 402 1280 65 1920 1057 </string>
+	<string>354 375 570 402 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>1292 80 570 402 1280 65 1920 1057 </string>
+	<string>195 207 570 402 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>1527 177 570 402 1280 65 1920 1080 </string>
+	<string>130 62 570 402 0 0 1280 777 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -984,6 +984,15 @@
 				<real>0.8353000283241272</real>
 				<key>Red Component</key>
 				<real>0.70980000495910645</real>
+			</dict>
+			<key>Semantic History</key>
+			<dict>
+				<key>action</key>
+				<string>best editor</string>
+				<key>editor</key>
+				<string>com.github.atom</string>
+				<key>text</key>
+				<string>vim \1</string>
 			</dict>
 			<key>Send Code When Idle</key>
 			<false/>
@@ -1660,7 +1669,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>5F819608-98F3-48A9-81E1-E5E00CCEA7FD</string>
 	<key>NoSyncLastTipTime</key>
-	<real>499653697.90796602</real>
+	<real>500807221.319121</real>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -1678,6 +1687,20 @@
 		<string>0003</string>
 		<string>0004</string>
 		<string>0005</string>
+		<string>0006</string>
+		<string>0007</string>
+		<string>0008</string>
+		<string>0009</string>
+		<string>0010</string>
+		<string>0010</string>
+		<string>0011</string>
+		<string>0011</string>
+		<string>0012</string>
+		<string>0013</string>
+		<string>0014</string>
+		<string>0015</string>
+		<string>0016</string>
+		<string>0017</string>
 	</array>
 	<key>PMPrintingExpandedStateForPrint2</key>
 	<false/>
@@ -1727,7 +1750,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-11-01T08:25:18Z</date>
+	<date>2016-11-14T02:04:31Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
