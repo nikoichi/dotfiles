@@ -39,8 +39,8 @@ set wrapscan
 set incsearch "インクリメンタルサーチ. １文字入力毎に検索を行う
 set hlsearch "検索結果をハイライト
 set ic
-"検索のハイライトをon/offするためのショートカット
-nnoremap <silent> <C-l> :<C-u>set nohlsearch!<CR><C-l>
+"検索のハイライトを無効化するためのショートカット
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 "----------------------------------------
 " 自動補完
 "----------------------------------------
@@ -74,7 +74,6 @@ augroup EchoFilePath
 augroup END
 "-----------------------------------------------
 
-"--
 " from fujimura
 set ambiwidth=double
 set expandtab
@@ -268,6 +267,9 @@ if neobundle#is_installed('neocomplete.vim')
 endif
 " neocomplete・neosnippet・neosnippet-snippets終了！******************************
 
+" gitの差分を表示するぜ
+NeoBundle 'airblade/vim-gitgutter'
+
 call neobundle#end()
 
 " If there are uninstalled bundles found on startup,
@@ -326,14 +328,6 @@ function! s:GetHighlight(hi)
   return hl
 endfunction
 "------------------------------------------------------------------------------------------------------------------
-
-""""""""""""""""""""""""""""""
-" 自動的に閉じ括弧を入力
-""""""""""""""""""""""""""""""
-imap { {}<LEFT>
-imap [ []<LEFT>
-imap ( ()<LEFT>
-""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""
 " 最後のカーソル位置を復元する
