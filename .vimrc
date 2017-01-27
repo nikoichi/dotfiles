@@ -29,6 +29,11 @@ nnoremap <down> gj
 nnoremap <up> gk
 " バックスペースキーの有効化
 set backspace=indent,eol,start
+"----------------------------------------
+" 入力関関連設定
+"----------------------------------------
+set nrformats= "<C-a>コマンド使用時に0が頭についている数字も10進数とみなすように修正（デフォでは8進数とみなす）
+
 
 "----------------------------------------
 " 検索
@@ -269,6 +274,11 @@ endif
 
 " gitの差分を表示するぜ
 NeoBundle 'airblade/vim-gitgutter'
+
+" textobj のベース。これを入れないと他のtextobjは動かない！！
+NeoBundle "kana/vim-textobj-user"
+" ae, aiで全体選択
+NeoBundle 'kana/vim-textobj-entire'
 
 call neobundle#end()
 
