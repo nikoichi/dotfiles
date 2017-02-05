@@ -174,6 +174,8 @@ alias pro2='ssh apps@52.68.162.239'
 alias stg='ssh apps@ec2-52-192-1-81.ap-northeast-1.compute.amazonaws.com'
 #corporateサイトに接続。
 alias corp='ssh -i ~/.ssh/shikaku-square-web-key.pem ec2-user@ec2-52-196-29-87.ap-northeast-1.compute.amazonaws.com'
+#realのサーバーに接続
+alias real='ssh -i ~/.ssh/square-real.pem ec2-user@ec2-52-196-175-197.ap-northeast-1.compute.amazonaws.com'
 #*******************************************************
 #---------------------------------------------------------------end
 
