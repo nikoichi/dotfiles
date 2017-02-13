@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/watanabekouichi/.oh-my-zsh
+export ZSH=/Users/watanabekoichi/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -84,9 +84,9 @@ plugins+=(zsh-nvm)
 eval "$(rbenv init -)"
 
 #エイリアス設定---------------------------------------------------
-alias al='alias' #ls コマンドをgls コマンドに置換え
+alias al='alias'
 alias h='history'
-alias ls='gls --color=auto' #ls コマンドをgls コマンドに置換え
+alias ls='ls -G'
 # alias man='/usr/local/bin/jman' #manコマンドで常にjmanを起動
 alias v='vim'
 alias vi='vim'
@@ -190,11 +190,11 @@ function cdP {
 #---------------------------------------------------------------end
 setopt nonomatch
 
-export NVM_DIR="/Users/watanabekouichi/.nvm"
+export NVM_DIR="/Users/watanabekoichi/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 #autojumpの設定------------------------------
-[[ -s /Users/watanabekouichi/.autojump/etc/profile.d/autojump.sh ]] && source /Users/watanabekouichi/.autojump/etc/profile.d/autojump.sh
+[[ -s /Users/watanabekoichi/.autojump/etc/profile.d/autojump.sh ]] && source /Users/watanabekoichi/.autojump/etc/profile.d/autojump.sh
 
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
