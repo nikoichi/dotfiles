@@ -101,11 +101,11 @@ alias -g T='| tail'
 
 
 #rails関連+++++++++++++++++++++++++++++++++++++++++++++
-alias r='rails'
-alias rs='rails s'
-alias rc='rails c'
 alias be='bundle exec'
-alias rr='rake routes'
+alias r='rails'
+alias rs='bundle exec rails s'
+alias rc='bundle exec rails c'
+alias rr='bundle exec rake routes'
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 #Git関連~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -120,7 +120,7 @@ alias gco='git checkout'
 alias gcob='git checkout -b'
 alias gcod='git checkout develop'
 alias gcom='git checkout master'
-alias gcos='git checkout staging'
+alias gcos='git checkout sandbox'
 
 alias gc='git commit -v'
 alias gc!='git commit -v --amend'
@@ -150,7 +150,7 @@ alias gm='git merge'
 alias gpl='git pull'
 alias gplud='git pull upstream develop'
 alias gplum='git pull upstream master'
-alias gplus='git pull upstream staging'
+alias gplus='git pull upstream sandbox'
 alias gplrud='git pull --rebase upstream develop'
 alias gps='git push'
 alias gpsoc='git push origin $(git_current_branch)'
