@@ -167,11 +167,13 @@ alias gsh='git show'
 
 #◆サーバー接続関連*************************************
 #本番その１
-alias pro1='ssh apps@52.68.227.89'
+alias pro1='ssh pro1'
 #本番その２
-alias pro2='ssh apps@52.68.162.239'
-#ステージングに接続
-alias stg='ssh apps@ec2-52-192-1-81.ap-northeast-1.compute.amazonaws.com'
+alias pro2='ssh pro2'
+#stagingに接続
+alias stg='ssh stg'
+#sandboxに接続
+alias stg='ssh snd'
 #corporateサイトに接続。
 alias corp='ssh -i ~/.ssh/shikaku-square-web-key.pem ec2-user@ec2-52-196-29-87.ap-northeast-1.compute.amazonaws.com'
 #realのサーバーに接続
