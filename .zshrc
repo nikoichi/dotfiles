@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/watanabekoichi/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -120,7 +120,8 @@ alias gco='git checkout'
 alias gcob='git checkout -b'
 alias gcod='git checkout develop'
 alias gcom='git checkout master'
-alias gcos='git checkout sandbox'
+alias gcost='git checkout staging'
+alias gcosn='git checkout sandbox'
 
 alias gc='git commit -v'
 alias gc!='git commit -v --amend'
@@ -150,7 +151,8 @@ alias gm='git merge'
 alias gpl='git pull'
 alias gplud='git pull upstream develop'
 alias gplum='git pull upstream master'
-alias gplus='git pull upstream sandbox'
+alias gplust='git pull upstream staging'
+alias gplusn='git pull upstream sandbox'
 alias gplrud='git pull --rebase upstream develop'
 alias gps='git push'
 alias gpsoc='git push origin $(git_current_branch)'
@@ -162,6 +164,8 @@ alias gr1='git reset HEAD' #git add の取り消し
 alias gr1='git reset HEAD^'
 alias gs='git status'
 alias gsh='git show'
+alias gst='git stash'
+alias gstp='git stash pop'
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -173,7 +177,7 @@ alias pro2='ssh pro2'
 #stagingに接続
 alias stg='ssh stg'
 #sandboxに接続
-alias stg='ssh snd'
+alias snd='ssh snd'
 #corporateサイトに接続。
 alias corp='ssh -i ~/.ssh/shikaku-square-web-key.pem ec2-user@ec2-52-196-29-87.ap-northeast-1.compute.amazonaws.com'
 #realのサーバーに接続
@@ -192,11 +196,11 @@ function cdP {
 #---------------------------------------------------------------end
 setopt nonomatch
 
-export NVM_DIR="/Users/watanabekoichi/.nvm"
+export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 #autojumpの設定------------------------------
-[[ -s /Users/watanabekoichi/.autojump/etc/profile.d/autojump.sh ]] && source /Users/watanabekoichi/.autojump/etc/profile.d/autojump.sh
+[[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
 
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 

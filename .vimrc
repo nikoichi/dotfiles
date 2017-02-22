@@ -27,6 +27,9 @@ nnoremap j gj
 nnoremap k gk
 nnoremap <down> gj
 nnoremap <up> gk
+" コマンドラインモードでCtr+p,nをupとdownに変更。（実践vim p102参照）
+cnoremap <c-p> <up>
+cnoremap <c-n> <down>
 " バックスペースキーの有効化
 set backspace=indent,eol,start
 "----------------------------------------
@@ -136,11 +139,11 @@ let g:unite_enable_start_insert=1
 " バッファ一覧
 noremap <C-P> :Unite buffer<CR>
 " ファイル一覧
-noremap <C-N> :Unite -buffer-name=file file<CR>
+" noremap <C-N> :Unite -buffer-name=file file<CR>
 " 最近使ったファイルの一覧
 noremap <C-Z> :Unite file_mru<CR>
 " sourcesを「今開いているファイルのディレクトリ」とする
-noremap :uff :<C-u>UniteWithBufferDir file -buffer-name=file<CR>
+" noremap :uff :<C-u>UniteWithBufferDir file -buffer-name=file<CR>
 " ウィンドウを分割して開く
 au FileType unite nnoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
 au FileType unite inoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
@@ -151,6 +154,37 @@ au FileType unite inoremap <silent> <buffer> <expr> <C-K> unite#do_action('vspli
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 "----------------------------------------------------------------------------------
+
+"Vimの便利な画面分割＆タブページと、それを更に便利にする方法-------------------------
+"http://qiita.com/tekkoc/items/98adcadfa4bdc8b5a6ca
+nnoremap s <Nop>
+nnoremap sj <C-w>j
+nnoremap sk <C-w>k
+nnoremap sl <C-w>l
+nnoremap sh <C-w>h
+nnoremap sJ <C-w>J
+nnoremap sK <C-w>K
+nnoremap sL <C-w>L
+nnoremap sH <C-w>H
+" nnoremap sn gt
+" nnoremap sp gT
+nnoremap sr <C-w>r
+nnoremap s= <C-w>=
+nnoremap sw <C-w>w
+nnoremap so <C-w>_<C-w>|
+nnoremap sO <C-w>=
+nnoremap sN :<C-u>bn<CR>
+nnoremap sP :<C-u>bp<CR>
+nnoremap st :<C-u>tabnew<CR>
+nnoremap sT :<C-u>Unite tab<CR>
+nnoremap ss :<C-u>sp<CR>
+nnoremap sv :<C-u>vs<CR>
+nnoremap sq :<C-u>q<CR>
+nnoremap sQ :<C-u>bd<CR>
+nnoremap sb :<C-u>Unite buffer_tab -buffer-name=file<CR>
+nnoremap sB :<C-u>Unite buffer -buffer-name=file<CR>
+NeoBundle 'kana/vim-submode'
+"Vimの便利な画面分割＆タブページと、それを更に便利にする方法-------------------------end
 
 " ファイルをtree表示してくれる
 NeoBundle 'scrooloose/nerdtree'
@@ -462,3 +496,21 @@ function! LightlineMode()
   return winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 "----------------------------------------------------------------------------end
+" submode.vim
+" http://d.hatena.ne.jp/thinca/20130131/1359567419
+" ウィンドウサイズの変更キーを簡易化する
+" [C-w],[+]または、[C-w],[-]
+" 上方で設定しているs-,s+,s>,s<でも簡易化
+call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
+call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')
+call submode#enter_with('bufmove', 'n', '', 's+', '<C-w>+')
+call submode#enter_with('bufmove', 'n', '', 's-', '<C-w>-')
+call submode#map('bufmove', 'n', '', '>', '<C-w>>')
+call submode#map('bufmove', 'n', '', '<', '<C-w><')
+call submode#map('bufmove', 'n', '', '+', '<C-w>+')
+call submode#map('bufmove', 'n', '', '-', '<C-w>-')
+" gt,gTでも簡易化
+call submode#enter_with('changetab', 'n', '', 'gt', 'gt')
+call submode#enter_with('changetab', 'n', '', 'gT', 'gT')
+call submode#map('changetab', 'n', '', 't', 'gt')
+call submode#map('changetab', 'n', '', 'T', 'gT')
