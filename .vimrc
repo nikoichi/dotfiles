@@ -24,7 +24,9 @@ set number " 行番号を表示
 " set cursorline " カーソルラインをハイライト → これをONにしたら移動がメッチャ重くなったのでOFFに。
 " 行が折り返し表示されていた場合、行単位ではなく表示行単位でカーソルを移動する
 nnoremap j gj
+nnoremap gj j
 nnoremap k gk
+nnoremap gk k
 nnoremap <down> gj
 nnoremap <up> gk
 " コマンドラインモードでCtr+p,nをupとdownに変更。（実践vim p102参照）
@@ -32,11 +34,23 @@ cnoremap <c-p> <up>
 cnoremap <c-n> <down>
 " バックスペースキーの有効化
 set backspace=indent,eol,start
+" insertモード中の移動
+imap <C-p> <UP>
+imap <C-n> <DOWN>
+imap <C-f> <RIGHT>
+imap <C-b> <LEFT>
+imap <C-d> <DELETE>
+
+"----------------------------------------
+" コマンドラインモード（Exコマンド）
+"----------------------------------------
+" %%で現在のディレクトリのパスを表示（%:hと同じになる）（実践vim p136参照）
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+
 "----------------------------------------
 " 入力関関連設定
 "----------------------------------------
 set nrformats= "<C-a>コマンド使用時に0が頭についている数字も10進数とみなすように修正（デフォでは8進数とみなす）
-
 
 "----------------------------------------
 " 検索
@@ -171,8 +185,8 @@ nnoremap sH <C-w>H
 nnoremap sr <C-w>r
 nnoremap s= <C-w>=
 nnoremap sw <C-w>w
-nnoremap so <C-w>_<C-w>|
-nnoremap sO <C-w>=
+" nnoremap so <C-w>_<C-w>|
+" nnoremap sO <C-w>=
 nnoremap sN :<C-u>bn<CR>
 nnoremap sP :<C-u>bp<CR>
 nnoremap st :<C-u>tabnew<CR>
@@ -181,6 +195,8 @@ nnoremap ss :<C-u>sp<CR>
 nnoremap sv :<C-u>vs<CR>
 nnoremap sq :<C-u>q<CR>
 nnoremap sQ :<C-u>bd<CR>
+" アクティブなウィンドウ以外を閉じる
+nnoremap so <C-w>o
 nnoremap sb :<C-u>Unite buffer_tab -buffer-name=file<CR>
 nnoremap sB :<C-u>Unite buffer -buffer-name=file<CR>
 NeoBundle 'kana/vim-submode'
@@ -200,7 +216,6 @@ set statusline+=%{fugitive#statusline()}
 " Required:
 filetype plugin indent on
 "---------------------------------------------
-
 
 " ステータスラインの表示内容強化---------------------------
 NeoBundle 'itchyny/lightline.vim'
