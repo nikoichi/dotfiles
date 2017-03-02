@@ -13,7 +13,6 @@ set nobackup
 
 set virtualedit=block
 set ambiwidth=double
-
 filetype plugin indent on
 
 "----------------------------------------
@@ -150,21 +149,15 @@ NeoBundle 'Shougo/neomru.vim'
 " Unit.vimの設定
 """"""""""""""""""""""""""""""
 " 入力モードで開始する
-let g:unite_enable_start_insert=1
+" let g:unite_enable_start_insert=1
 " バッファ一覧
 noremap <C-P> :Unite buffer<CR>
 " ファイル一覧
-" noremap <C-N> :Unite -buffer-name=file file<CR>
+noremap <C-N> :Unite -buffer-name=file file<CR>
 " 最近使ったファイルの一覧
 noremap <C-Z> :Unite file_mru<CR>
 " sourcesを「今開いているファイルのディレクトリ」とする
 " noremap :uff :<C-u>UniteWithBufferDir file -buffer-name=file<CR>
-" ウィンドウを分割して開く
-au FileType unite nnoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
-au FileType unite inoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
-" ウィンドウを縦に分割して開く
-au FileType unite nnoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
-au FileType unite inoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
 " ESCキーを2回押すと終了する
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
@@ -215,7 +208,6 @@ autocmd QuickFixCmdPost *grep* cwindow
 " ステータス行に現在のgitブランチを表示する
 set statusline+=%{fugitive#statusline()}
 " Required:
-filetype plugin indent on
 "---------------------------------------------
 
 " ステータスラインの表示内容強化---------------------------
@@ -232,17 +224,26 @@ NeoBundle 'Lokaltog/vim-powerline'
 "vim-powerlineの設定-------------------------------------------
 let g:Powerline_symbols = 'fancy'
 
+" Rails関連のプラグイン！~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 " Rails向けのコマンドを提供する
 NeoBundle 'tpope/vim-rails'
 
+" slimファイルに色を付ける
+NeoBundle 'slim-template/vim-slim'
+
 " Ruby向けにendを自動挿入してくれる
 NeoBundle 'tpope/vim-endwise'
+
+" Rails関連のプラグイン！~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~end
 
 " コメントO
 NeoBundle 'tomtom/tcomment_vim'
 
 " シングルクオートとダブルクオートの入れ替え等
 NeoBundle 'tpope/vim-surround'
+
+" surround.vimも.コマンドでの繰り返しの対象となる。
+NeoBundle 'tpope/vim-repeat'
 
 " インデントに色を付けて見やすくする--------------------------
 NeoBundle 'nathanaelkane/vim-indent-guides'
@@ -278,7 +279,6 @@ NeoBundle 'vim-jp/vimdoc-ja'
 "vimを使っているデザイナー向けプラグイン----------------------
 " "http://qiita.com/alpaca_taichou/items/056a4c42fe7a928973e6
 " NeoBundle 'mattn/emmet-vim'
-" NeoBundle 'taichouchou2/surround.vim'
 " NeoBundle 'open-browser.vim'
 " NeoBundle 'mattn/webapi-vim'
 " NeoBundle 'tell-k/vim-browsereload-mac'
@@ -443,9 +443,9 @@ au BufRead,BufNewFile,BufReadPre *.coffee   set filetype=coffee
 autocmd FileType coffee     setlocal sw=2 sts=2 ts=2 et
 " オートコンパイル
   "保存と同時にコンパイルする
-autocmd BufWritePost *.coffee silent make! 
+" autocmd BufWritePost *.coffee silent make!
   "エラーがあったら別ウィンドウで表示
-autocmd QuickFixCmdPost * nested cwindow | redraw! 
+" autocmd QuickFixCmdPost * nested cwindow | redraw!
 " Ctrl-cで右ウィンドウにコンパイル結果を一時表示する
 nnoremap <silent> <C-C> :CoffeeCompile vert <CR><C-w>h
 "------------------------------------------------------------
