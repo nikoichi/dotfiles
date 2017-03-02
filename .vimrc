@@ -35,8 +35,9 @@ cnoremap <c-n> <down>
 " バックスペースキーの有効化
 set backspace=indent,eol,start
 " insertモード中の移動
-imap <C-p> <UP>
-imap <C-n> <DOWN>
+" imap <C-p> <UP>
+" imap <C-n> <DOWN>
+" →BTTで設定。
 imap <C-f> <RIGHT>
 imap <C-b> <LEFT>
 imap <C-d> <DELETE>

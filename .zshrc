@@ -115,6 +115,8 @@ alias gaa='git add --all'
 alias gb='git branch'
 alias gbd='git branch -d'
 alias gbm='git branch -m'  #現在のブランチ名の変更。ブランチを指定する際は、後ろに「<古いブランチ名> <新しいブランチ名>」を記載。
+alias gbmer='git branch --merged'  #マージ済のブランチ一覧表示。
+alias gbmerd="git branch --merged | grep -vE '^\*|master$|develop$' | xargs -I % git branch -d %"  #マージ済のブランチ一括削除。
 
 alias gco='git checkout'
 alias gcob='git checkout -b'
