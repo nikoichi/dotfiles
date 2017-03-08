@@ -1,3 +1,5 @@
+" <Leader>をスペースキーに
+let mapleader = "\<Space>"
 set encoding=utf-8
 scriptencoding utf-8
 " ↑1行目は読み込み時の文字コードの設定
@@ -29,17 +31,20 @@ nnoremap gk k
 nnoremap <down> gj
 nnoremap <up> gk
 " コマンドラインモードでCtr+p,nをupとdownに変更。（実践vim p102参照）
-cnoremap <c-p> <up>
-cnoremap <c-n> <down>
+" cnoremap <c-p> <up>
+" cnoremap <c-n> <down>
+" →BTTで設定。
 " バックスペースキーの有効化
 set backspace=indent,eol,start
-" insertモード中の移動
+" ~~~~~~insertモード中の移動(Emacs風キーバインドらしい)~~~~~~~~
 " imap <C-p> <UP>
 " imap <C-n> <DOWN>
 " →BTTで設定。
 imap <C-f> <RIGHT>
 imap <C-b> <LEFT>
 imap <C-d> <DELETE>
+imap <C-e> <END>
+imap <C-a> <HOME>
 
 "----------------------------------------
 " コマンドラインモード（Exコマンド）
@@ -174,13 +179,15 @@ nnoremap sJ <C-w>J
 nnoremap sK <C-w>K
 nnoremap sL <C-w>L
 nnoremap sH <C-w>H
-" nnoremap sn gt
-" nnoremap sp gT
+nnoremap sn gt
+nnoremap sp gT
 nnoremap sr <C-w>r
 nnoremap s= <C-w>=
 nnoremap sw <C-w>w
-" nnoremap so <C-w>_<C-w>|
-" nnoremap sO <C-w>=
+" 縦横最大化
+" nnoremap so <C-wA>_<C-w>|
+" 分割画面の大きさを揃える
+nnoremap sO <C-w>=
 nnoremap sN :<C-u>bn<CR>
 nnoremap sP :<C-u>bp<CR>
 nnoremap st :<C-u>tabnew<CR>
@@ -227,6 +234,14 @@ let g:Powerline_symbols = 'fancy'
 " Rails関連のプラグイン！~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 " Rails向けのコマンドを提供する
 NeoBundle 'tpope/vim-rails'
+" vim-railsの設定。
+" autocmd User Rails.controller* Rnavcommand api app/controllers/api -glob=**/* -suffix=_controller.rb
+" autocmd User Rails.controller* Rnavcommand tmpl app/controllers/tmpl -glob=**/* -suffix=_controller.rb
+" autocmd User Rails Rnavcommand config config   -glob=*.*  -suffix= -default=routes.rb
+autocmd User Rails nmap :<C-u>Rco :<C-u>Rcontroller
+autocmd User Rails nmap :<C-u>Rmo :<C-u>Rmodel
+autocmd User Rails nmap :<C-u>Rvi :<C-u>Rview
+
 
 " slimファイルに色を付ける
 NeoBundle 'slim-template/vim-slim'
