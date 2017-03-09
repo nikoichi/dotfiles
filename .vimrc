@@ -1,6 +1,3 @@
-" <Leader>をスペースキーに
-let mapleader = "\<Space>"
-
 set encoding=utf-8
 scriptencoding utf-8
 " ↑1行目は読み込み時の文字コードの設定
@@ -26,13 +23,14 @@ set number " 行番号を表示
 " set cursorline " カーソルラインをハイライト → これをONにしたら移動がメッチャ重くなったのでOFFに。
 " 行が折り返し表示されていた場合、行単位ではなく表示行単位でカーソルを移動する
 nnoremap j gj
+nnoremap gj j
 nnoremap k gk
 nnoremap gk k
 nnoremap <down> gj
 nnoremap <up> gk
 " ^, $,を押しやすく。
-nnoremap <Leader>h ^
-nnoremap <Leader>l $
+nnoremap <Space>h ^
+nnoremap <Space>l $
 
 " コマンドラインモードでCtr+p,nをupとdownに変更。（実践vim p102参照）
 " cnoremap <c-p> <up>
@@ -158,11 +156,11 @@ NeoBundle 'Shougo/neomru.vim'
 " 入力モードで開始する
 " let g:unite_enable_start_insert=1
 " バッファ一覧
-nnoremap <Leader>b :Unite buffer<CR>
+nnoremap <Space>b :Unite buffer<CR>
 " 最近使ったファイルの一覧
-nnoremap <Leader>B :<C-u>Unite file_mru<CR>
+nnoremap <Space>B :<C-u>Unite file_mru<CR>
 " カレントディレクトリ配下のファイル一覧
-nnoremap <Leader>f :<C-u>Unite -buffer-name=file file<CR>
+nnoremap <Space>f :<C-u>Unite -buffer-name=file file<CR>
 " sourcesを「今開いているファイルのディレクトリ」とする
 " noremap :uff :<C-u>UniteWithBufferDir file -buffer-name=file<CR>
 
@@ -189,7 +187,7 @@ nnoremap sO <C-w>=
 nnoremap sN :<C-u>bn<CR>
 nnoremap sP :<C-u>bp<CR>
 nnoremap st :<C-u>tabnew<CR>
-" nnoremap <Leader>T :<C-u>Unite tab<CR>
+" nnoremap <Space>T :<C-u>Unite tab<CR>
 nnoremap ss :<C-u>sp<CR>
 nnoremap sv :<C-u>vs<CR>
 nnoremap sq :<C-u>q<CR>
@@ -236,18 +234,18 @@ NeoBundle 'tpope/vim-rails'
 " autocmd User Rails.controller* Rnavcommand tmpl app/controllers/tmpl -glob=**/* -suffix=_controller.rb
 " autocmd User Rails Rnavcommand config config   -glob=*.*  -suffix= -default=routes.rb
 autocmd User Rails nmap :<C-u>Rco :<C-u>Rcontroller
-nnoremap <Leader>c :<C-u>Rcontroller<CR>
+nnoremap <Space>c :<C-u>Rcontroller<CR>
 autocmd User Rails nmap :<C-u>Rmo :<C-u>Rmodel
-nnoremap <Leader>m :<C-u>Rmodel<CR>
+nnoremap <Space>m :<C-u>Rmodel<CR>
 autocmd User Rails nmap :<C-u>Rvi :<C-u>Rview
-nnoremap <Leader>v :<C-u>Rview<CR>
+nnoremap <Space>v :<C-u>Rview<CR>
 "カレントバッファがModelならば，db/schema.rbにとぶ。カレントバッファがControllerかつカーソル位置がアクションメソッド内あれば，対応するViewにとぶ。
 "カーソル位置がアクションメソッドの外であれば，対応するHelper　→超便利な使えるやつ。
-nnoremap <Leader>r :<C-u>R<CR>
+nnoremap <Space>r :<C-u>R<CR>
 " 対応するテストファイルにとぶ。
-nnoremap <Leader>a :<C-u>A<CR>
+nnoremap <Space>a :<C-u>A<CR>
 " カーソル位置のシンボルに応じて定義元にジャンプしてくれる。defineのd。
-nnoremap <Leader>d gf
+nnoremap <Space>d gf
 
 " slimファイルに色を付ける
 NeoBundle 'slim-template/vim-slim'
