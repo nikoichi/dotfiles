@@ -158,7 +158,7 @@ NeoBundle 'Shougo/neomru.vim'
 " バッファ一覧
 nnoremap <Space>b :Unite buffer<CR>
 " 最近使ったファイルの一覧
-nnoremap <Space>B :<C-u>Unite file_mru<CR>
+nnoremap <Space>r :<C-u>Unite file_mru<CR>
 " カレントディレクトリ配下のファイル一覧
 nnoremap <Space>f :<C-u>Unite -buffer-name=file file<CR>
 " sourcesを「今開いているファイルのディレクトリ」とする
@@ -241,9 +241,9 @@ autocmd User Rails nmap :<C-u>Rvi :<C-u>Rview
 nnoremap <Space>v :<C-u>Rview<CR>
 "カレントバッファがModelならば，db/schema.rbにとぶ。カレントバッファがControllerかつカーソル位置がアクションメソッド内あれば，対応するViewにとぶ。
 "カーソル位置がアクションメソッドの外であれば，対応するHelper　→超便利な使えるやつ。
-nnoremap <Space>r :<C-u>R<CR>
+nnoremap <Space>R :<C-u>R<CR>
 " 対応するテストファイルにとぶ。
-nnoremap <Space>a :<C-u>A<CR>
+nnoremap <Space>A :<C-u>A<CR>
 " カーソル位置のシンボルに応じて定義元にジャンプしてくれる。defineのd。
 nnoremap <Space>d gf
 
@@ -343,11 +343,12 @@ endif
 
 " gitの差分を表示するぜ
 NeoBundle 'airblade/vim-gitgutter'
-
 " textobj のベース。これを入れないと他のtextobjは動かない！！
 NeoBundle "kana/vim-textobj-user"
 " ae, aiで全体選択
 NeoBundle 'kana/vim-textobj-entire'
+" 検索・置換を便利にするvim-abolish http://qiita.com/yuku_t/items/77a3361ff4d27bda641e
+NeoBundle 'tpope/vim-abolish'
 
 call neobundle#end()
 
