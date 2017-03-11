@@ -106,6 +106,10 @@ alias r='rails'
 alias rs='bundle exec rails s'
 alias rc='bundle exec rails c'
 alias rr='bundle exec rake routes'
+alias rdm='bundle exec rake db:migrate'
+alias rdms='bundle exec rake db:migrate:status'
+alias rdr='bundle exec rake db:rollback'
+
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 #Git関連~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -145,9 +149,10 @@ alias gf='git fetch'
 alias gfu='git fetch upstream'
 
 alias gg='git grep -n'
-alias gl="git log"
-alias glg="git log --graph --branches --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-alias glgo="git log --decorate --graph --oneline --branches"
+alias gl="git log --decorate"
+alias gl="git log --decorate --first-parent"
+alias glg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
+alias glga="git log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
 alias gm='git merge'
 
 alias gpl='git pull'
