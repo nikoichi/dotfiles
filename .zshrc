@@ -90,6 +90,7 @@ alias ls='ls -G'
 # alias man='/usr/local/bin/jman' #manコマンドで常にjmanを起動
 alias v='vim'
 alias vi='vim'
+alias vv='vim ~/.vimrc'
 alias vz='vim ~/.zshrc'
 
 #グローバルエイリアス@@@@@@@@@@@@@@@@@@@@@@
@@ -150,7 +151,7 @@ alias gfu='git fetch upstream'
 
 alias gg='git grep -n'
 alias gl="git log --decorate"
-alias gl="git log --decorate --first-parent"
+alias glf="git log --decorate --first-parent"
 alias glg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
 alias glga="git log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
 alias gm='git merge'

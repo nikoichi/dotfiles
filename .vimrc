@@ -55,7 +55,7 @@ imap <C-a> <HOME>
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 "----------------------------------------
-" 入力関関連設定
+" 入力関連設定
 "----------------------------------------
 set nrformats= "<C-a>コマンド使用時に0が頭についている数字も10進数とみなすように修正（デフォでは8進数とみなす）
 
@@ -77,6 +77,14 @@ set infercase
 
 set wildmenu " コマンドモードの補完
 set history=5000 " 保存するコマンド履歴の数
+" 括弧の入力補完設定
+inoremap { {}<Left>
+inoremap {<Enter> {}<Left><CR><BS><ESC><S-o>
+inoremap ( ()<Left>
+inoremap (<Enter> ()<Left><CR><BS><ESC><S-o>
+inoremap [ []<Left>
+inoremap " ""<Left>
+inoremap ' ''<Left>
 
 "----------------------------------------
 " 表示設定
@@ -349,7 +357,6 @@ NeoBundle "kana/vim-textobj-user"
 NeoBundle 'kana/vim-textobj-entire'
 " 検索・置換を便利にするvim-abolish http://qiita.com/yuku_t/items/77a3361ff4d27bda641e
 NeoBundle 'tpope/vim-abolish'
-
 call neobundle#end()
 
 " If there are uninstalled bundles found on startup,
