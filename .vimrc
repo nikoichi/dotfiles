@@ -305,18 +305,34 @@ NeoBundle 'vim-jp/vimdoc-ja'
 
 "vimを使っているデザイナー向けプラグイン----------------------
 " "http://qiita.com/alpaca_taichou/items/056a4c42fe7a928973e6
-" NeoBundle 'mattn/emmet-vim'
+" http://qiita.com/muran001/items/9ce24525b3285678acc3
+NeoBundle 'mattn/emmet-vim'
 " NeoBundle 'open-browser.vim'
 " NeoBundle 'mattn/webapi-vim'
-" NeoBundle 'tell-k/vim-browsereload-mac'
-" NeoBundle 'hail2u/vim-css3-syntax'
-" NeoBundle 'taichouchou2/html5.vim'
-" NeoBundle 'taichouchou2/vim-javascript'
+NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'kchmck/vim-coffee-script'
 "-------------------------------------------------------------
 
+"vimを使っているデザイナー向けプラグイン----------------------
+"http://qiita.com/ysm001/items/8ae97cfdaae3f5fe79f4#html--css%E9%96%A2%E9%80%A3
+NeoBundle 'gko/vim-coloresque'
+NeoBundle 'elzr/vim-json'
+"-------------------------------------------------------------
+" JavaScriptのシンタックスハイライト
+NeoBundle 'othree/yajs.vim'
+
 "貼り付け時自動でpaste modeにする
 NeoBundle 'ConradIrwin/vim-bracketed-paste'
+
+" emmet-vim の設定--------------------------------------
+let g:user_emmet_leader_key = '<C-Y>'
+let g:user_emmet_settings = {
+    \    'variables': {
+    \      'lang': "ja"
+    \    },
+    \   'indentation': '  '
+    \ }
+" emmet-vim の設定--------------------------------------end
 
 " neocomplete・neosnippet・neosnippet-snippetsのインストール***********************
 if has('lua') " lua機能が有効になっている場合・・・・・・①
