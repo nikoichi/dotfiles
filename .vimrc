@@ -191,7 +191,7 @@ nnoremap sw <C-w>w
 " 縦横最大化
 " nnoremap so <C-wA>_<C-w>|
 " 分割画面の大きさを揃える
-nnoremap sO <C-w>=
+nnoremap s= <C-w>=
 nnoremap sN :<C-u>bn<CR>
 nnoremap sP :<C-u>bp<CR>
 nnoremap st :<C-u>tabnew<CR>
@@ -315,11 +315,11 @@ NeoBundle 'kchmck/vim-coffee-script'
 
 "vimを使っているデザイナー向けプラグイン----------------------
 "http://qiita.com/ysm001/items/8ae97cfdaae3f5fe79f4#html--css%E9%96%A2%E9%80%A3
-NeoBundle 'gko/vim-coloresque'
+NeoBundle 'ap/vim-css-color'
 NeoBundle 'elzr/vim-json'
 "-------------------------------------------------------------
 " JavaScriptのシンタックスハイライト
-NeoBundle 'othree/yajs.vim'
+NeoBundle 'pangloss/vim-javascript'
 
 "貼り付け時自動でpaste modeにする
 NeoBundle 'ConradIrwin/vim-bracketed-paste'
@@ -373,7 +373,23 @@ NeoBundle "kana/vim-textobj-user"
 NeoBundle 'kana/vim-textobj-entire'
 " 検索・置換を便利にするvim-abolish http://qiita.com/yuku_t/items/77a3361ff4d27bda641e
 NeoBundle 'tpope/vim-abolish'
+" RubocopをVimから実行するためのプラグイン http://qiita.com/yuku_t/items/0ac33cea18e10f14e185
+NeoBundle 'scrooloose/syntastic'
+let g:syntastic_mode_map = { 'mode': 'passive',
+            \ 'active_filetypes': ['ruby'] }
+let g:syntastic_ruby_checkers = ['rubocop']
+
+" markdownの設定。プレビューなど。######################################
+NeoBundle 'plasticboy/vim-markdown'
+NeoBundle 'kannokanno/previm'
+NeoBundle 'tyru/open-browser.vim'
+
+au BufRead,BufNewFile *.md set filetype=markdown
+let g:previm_open_cmd = 'open -a Firefox'
+" ######################################################################
+
 call neobundle#end()
+" @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@neobundle終了!
 
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.

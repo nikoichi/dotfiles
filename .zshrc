@@ -103,13 +103,14 @@ alias -g T='| tail'
 
 #rails関連+++++++++++++++++++++++++++++++++++++++++++++
 alias be='bundle exec'
-alias r='rails'
-alias rs='bundle exec rails s'
+alias r='bundle exec rails'
 alias rc='bundle exec rails c'
-alias rr='bundle exec rake routes'
-alias rdm='bundle exec rake db:migrate'
-alias rdms='bundle exec rake db:migrate:status'
-alias rdr='bundle exec rake db:rollback'
+alias rg='bundle exec rails g'
+alias rs='bundle exec rails s'
+alias rr='bin/rake routes'
+alias rdm='bin/rake db:migrate'
+alias rdms='bin/rake db:migrate:status'
+alias rdr='bin/rake db:rollback'
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++
 
