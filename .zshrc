@@ -215,3 +215,4 @@ export NVM_DIR="$HOME/.nvm"
 
 #Shell Integration(shellの統合)を常用するための記載
 source ~/.iterm2_shell_integration.`basename $SHELL`
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
