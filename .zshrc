@@ -92,6 +92,7 @@ alias v='vim'
 alias vi='vim'
 alias vv='vim ~/.vimrc'
 alias vz='vim ~/.zshrc'
+alias ctags="`brew --prefix`/bin/ctags"
 
 #グローバルエイリアス@@@@@@@@@@@@@@@@@@@@@@
 alias -g G='| grep'
@@ -104,6 +105,8 @@ alias -g T='| tail'
 #rails関連+++++++++++++++++++++++++++++++++++++++++++++
 alias be='bundle exec'
 alias r='bundle exec rails'
+alias rake='bin/rake'
+alias rspec='bin/rspec'
 alias rc='bundle exec rails c'
 alias rg='bundle exec rails g'
 alias rs='bundle exec rails s'
@@ -122,7 +125,7 @@ alias gb='git branch'
 alias gbd='git branch -d'
 alias gbm='git branch -m'  #現在のブランチ名の変更。ブランチを指定する際は、後ろに「<古いブランチ名> <新しいブランチ名>」を記載。
 alias gbmer='git branch --merged'  #マージ済のブランチ一覧表示。
-alias gbmerd="git branch --merged | grep -vE '^\*|master$|develop$' | xargs -I % git branch -d %"  #マージ済のブランチ一括削除。
+alias gbmerd="git branch --merged | grep -vE '^\*|master$|release$|develop$' | xargs -I % git branch -d %"  #マージ済のブランチ一括削除。
 
 alias gco='git checkout'
 alias gcob='git checkout -b'
@@ -145,24 +148,27 @@ alias gdhs='git diff HEAD --stat' #ワーキングツリー（現在の作業状
 alias gdh1s='git diff HEAD^..HEAD --stat' #HEAD（前回のコミット）からHEAD^（前々回のコミット）の差分のファイル名などのステータスのみ
 alias gdh2s='git diff HEAD^^..HEAD^ --stat' #HEAD（前々回のコミット）からHEAD^（前々々回のコミット）の差分のファイル名などのステータスのみ
 alias gdc='git diff --cached' #インデックス（add済み）とHEAD(前回のコミット)の差分
-alias gdd='git diff develop...$(git_current_branch)' #現在のブランチとブランチ分岐前の差分
-alias gdds='git diff develop...$(git_current_branch) --stat' #ファイル名などのステータスのみ。
+alias gdm='git diff master...$(git_current_branch)' #現在のブランチとブランチ分岐前の差分
+alias gdms='git diff master...$(git_current_branch) --stat' #ファイル名などのステータスのみ。
 alias gf='git fetch'
 alias gfu='git fetch upstream'
 
 alias gg='git grep -n'
 alias gl="git log --decorate"
 alias glf="git log --decorate --first-parent"
+alias glfp="git log --decorate --first-parent -p"
 alias glg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
 alias glga="git log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
+alias glp="git log --decorate -p"
 alias gm='git merge'
 
 alias gpl='git pull'
-alias gplud='git pull upstream develop'
-alias gplum='git pull upstream master'
-alias gplust='git pull upstream staging'
-alias gplusn='git pull upstream sandbox'
-alias gplrud='git pull --rebase upstream develop'
+alias gplom='git pull origin master'
+# alias gplud='git pull upstream develop'
+# alias gplum='git pull upstream master'
+# alias gplust='git pull upstream staging'
+# alias gplusn='git pull upstream sandbox'
+# alias gplrud='git pull --rebase upstream develop'
 alias gps='git push'
 alias gpsoc='git push origin $(git_current_branch)'
 alias gpsod='git push origin develop'
@@ -177,21 +183,6 @@ alias gst='git stash'
 alias gstp='git stash pop'
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-#◆サーバー接続関連*************************************
-#本番その１
-alias pro1='ssh pro1'
-#本番その２
-alias pro2='ssh pro2'
-#stagingに接続
-alias stg='ssh stg'
-#sandboxに接続
-alias snd='ssh snd'
-#corporateサイトに接続。
-alias corp='ssh -i ~/.ssh/shikaku-square-web-key.pem ec2-user@ec2-52-196-29-87.ap-northeast-1.compute.amazonaws.com'
-#realのサーバーに接続
-alias real='ssh -i ~/.ssh/square-real.pem ec2-user@ec2-52-196-175-197.ap-northeast-1.compute.amazonaws.com'
-#*******************************************************
 #---------------------------------------------------------------end
 
 #関数設定----------------------------------------------------------

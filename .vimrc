@@ -133,6 +133,9 @@ set whichwrap=4
 "vimでクリップボードが使えるように設定。
 set clipboard+=unnamed
 
+"バッファのイベントが生じるたびにctagsを呼び出す
+" :autocmd BufWritePost * call system("ctags -R")
+
 " Note: Skip initialization for vim-tiny or vim-small.
 if 0 | endif
 
@@ -203,6 +206,12 @@ nnoremap sQ :<C-u>bd<CR>
 " アクティブなウィンドウ以外を閉じる
 nnoremap so <C-w>o
 
+"バッファをサクサク移動するためのキーマッピング(実践vim p116)--------------------------
+nnoremap <silent> [b :bprevious<CR>
+nnoremap <silent> ]b :bnext<CR>
+nnoremap <silent> [B :bfirst<CR>
+nnoremap <silent> ]B :blast<CR>
+
 NeoBundle 'kana/vim-submode'
 "Vimの便利な画面分割＆タブページと、それを更に便利にする方法-------------------------end
 
@@ -241,12 +250,12 @@ NeoBundle 'tpope/vim-rails'
 " autocmd User Rails.controller* Rnavcommand api app/controllers/api -glob=**/* -suffix=_controller.rb
 " autocmd User Rails.controller* Rnavcommand tmpl app/controllers/tmpl -glob=**/* -suffix=_controller.rb
 " autocmd User Rails Rnavcommand config config   -glob=*.*  -suffix= -default=routes.rb
-autocmd User Rails nmap :<C-u>Rco :<C-u>Rcontroller
-nnoremap <Space>c :<C-u>Rcontroller<CR>
-autocmd User Rails nmap :<C-u>Rmo :<C-u>Rmodel
-nnoremap <Space>m :<C-u>Rmodel<CR>
-autocmd User Rails nmap :<C-u>Rvi :<C-u>Rview
-nnoremap <Space>v :<C-u>Rview<CR>
+" autocmd User Rails nmap :<C-u>Rco :<C-u>Rcontroller
+nnoremap <Space>c :<C-u>Econtroller<CR>
+" autocmd User Rails nmap :<C-u>Rmo :<C-u>Rmodel
+nnoremap <Space>m :<C-u>Emodel<CR>
+" autocmd User Rails nmap :<C-u>Rvi :<C-u>Rview
+nnoremap <Space>v :<C-u>Eview<CR>
 "カレントバッファがModelならば，db/schema.rbにとぶ。カレントバッファがControllerかつカーソル位置がアクションメソッド内あれば，対応するViewにとぶ。
 "カーソル位置がアクションメソッドの外であれば，対応するHelper　→超便利な使えるやつ。
 nnoremap <Space>R :<C-u>R<CR>
@@ -387,6 +396,12 @@ NeoBundle 'tyru/open-browser.vim'
 au BufRead,BufNewFile *.md set filetype=markdown
 let g:previm_open_cmd = 'open -a Firefox'
 " ######################################################################
+
+"セッション自動保持プラグイン
+NeoBundle 'thaerkh/vim-workspace'
+nnoremap <Space>s :ToggleWorkspace<CR>
+let g:workspace_session_name = '.session.vim'
+let g:workspace_autosave_always = 1
 
 call neobundle#end()
 " @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@neobundle終了!
