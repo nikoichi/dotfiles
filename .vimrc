@@ -397,12 +397,6 @@ au BufRead,BufNewFile *.md set filetype=markdown
 let g:previm_open_cmd = 'open -a Firefox'
 " ######################################################################
 
-"セッション自動保持プラグイン
-NeoBundle 'thaerkh/vim-workspace'
-nnoremap <Space>s :ToggleWorkspace<CR>
-let g:workspace_session_name = '.session.vim'
-let g:workspace_autosave_always = 1
-
 call neobundle#end()
 " @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@neobundle終了!
 
