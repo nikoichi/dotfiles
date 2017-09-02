@@ -396,6 +396,9 @@ NeoBundle 'tyru/open-browser.vim'
 au BufRead,BufNewFile *.md set filetype=markdown
 let g:previm_open_cmd = 'open -a Firefox'
 " ######################################################################
+" textハイライト
+NeoBundle 'HybridText'
+autocm BufEnter * if &filetype == "" || &filetype == "text" || &filetype == "txt" | setlocal ft=hybrid | endif
 
 call neobundle#end()
 " @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@neobundle終了!
