@@ -88,6 +88,8 @@ alias al='alias'
 alias h='history'
 alias ls='ls -G'
 # alias man='/usr/local/bin/jman' #manコマンドで常にjmanを起動
+# RubyMineをmineで起動
+alias mine='/usr/local/bin/mine'
 alias v='vim'
 alias vi='vim'
 alias vv='vim ~/.vimrc'
@@ -98,7 +100,7 @@ alias ctags="`brew --prefix`/bin/ctags"
 alias -g G='| grep'
 alias -g P='| peco'
 alias -g T='| tail'
-
+alias -g L='| less'
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 
