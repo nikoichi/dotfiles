@@ -114,21 +114,25 @@ augroup END
 " from fujimura
 set ambiwidth=double
 set expandtab
-set shiftwidth=2
-set softtabstop=2
-set tabstop=2
 set guioptions-=T
 set guioptions+=a
 set guioptions-=m
 set guioptions+=R
-set autoindent
 set showmatch
-set smartindent
 set nobackup
 set noswapfile
 set nofoldenable
 set title
 set whichwrap=4
+
+"インデント関連
+set autoindent          "改行時に前の行のインデントを計測
+set smartindent         "改行時に入力された行の末尾に合わせて次の行のインデントを増減する
+set expandtab           "タブ入力を複数の空白に置き換える
+
+set tabstop=2           "タブを含むファイルを開いた際, タブを何文字の空白に変換するか
+set shiftwidth=2        "自動インデントで入る空白数
+set softtabstop=2       "キーボードから入るタブの数
 
 "vimでクリップボードが使えるように設定。
 set clipboard+=unnamed
