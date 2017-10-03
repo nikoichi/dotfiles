@@ -134,6 +134,15 @@ set tabstop=2           "タブを含むファイルを開いた際, タブを�
 set shiftwidth=2        "自動インデントで入る空白数
 set softtabstop=2       "キーボードから入るタブの数
 
+if has("autocmd")
+  "ファイルタイプの検索を有効にする
+  filetype plugin on
+  "ファイルタイプに合わせたインデントを利用
+  filetype indent on
+  "sw=softtabstop, sts=shiftwidth, ts=tabstop, et=expandtabの略
+  autocmd FileType sql         setlocal sw=4 sts=4 ts=4 et
+endif
+
 "vimでクリップボードが使えるように設定。
 set clipboard+=unnamed
 
