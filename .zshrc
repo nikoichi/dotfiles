@@ -145,6 +145,7 @@ alias gd='git diff' #ワーキングツリー（現在の作業状態）から�
 alias gdh='git diff HEAD' #ワーキングツリー（現在の作業状態）からHEAD（前回のコミット）の差分
 alias gdh1='git diff HEAD^..HEAD' #HEAD（前回のコミット）からHEAD^（前々回のコミット）の差分
 alias gdh2='git diff HEAD^^..HEAD^' #HEAD（前々回のコミット）からHEAD^（前々々回のコミット）の差分
+alias gds='git diff -cached' #accしてあるものの差分のみを見る。
 alias gds='git diff --stat' #ワーキングツリー（現在の作業状態）からインデックス（add済み）の差分（＝編集中でaddしていないもの）のファイル名などのステータスのみ
 alias gdhs='git diff HEAD --stat' #ワーキングツリー（現在の作業状態）からHEAD（前回のコミット）の差分のファイル名などのステータスのみ
 alias gdh1s='git diff HEAD^..HEAD --stat' #HEAD（前回のコミット）からHEAD^（前々回のコミット）の差分のファイル名などのステータスのみ
