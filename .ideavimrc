@@ -52,5 +52,5 @@ nnoremap sv :<C-u>vs<CR>
 nnoremap sq :<C-u>q<CR>
 nnoremap sQ :<C-u>bd<CR>
 " アクティブなウィンドウ以外を閉じる
-nnoremap so <C-w>o
+" nnoremap so <C-w>o
 

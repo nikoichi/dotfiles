@@ -385,13 +385,13 @@
 	<key>NSTableView Supports v2 KeyBingingTable</key>
 	<true/>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>2090 537 620 392 1440 39 1920 1057 </string>
+	<string>433 381 620 392 0 0 1440 900 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>359 377 918 381 0 0 1440 900 </string>
+	<string>2067 533 937 512 1440 39 1920 1080 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>429 214 650 427 0 0 1440 877 </string>
+	<string>0 0 1914 1067 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>59 14 650 427 0 0 1440 877 </string>
+	<string>1535 62 650 427 1440 39 1920 1080 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>247 130 650 427 0 0 1440 900 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
@@ -978,7 +978,7 @@
 			<key>Screen</key>
 			<integer>-1</integer>
 			<key>Scrollback Lines</key>
-			<integer>20000</integer>
+			<integer>50000</integer>
 			<key>Selected Text Color</key>
 			<dict>
 				<key>Blue Component</key>
@@ -1814,7 +1814,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-10-12T04:51:16Z</date>
+	<date>2017-10-24T12:50:10Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>Selection Respects Soft Boundaries</key>
