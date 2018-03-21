@@ -59,6 +59,8 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH=/usr/local/bin:$PATH
 eval "$(rbenv init -)"
 
+# android SDKのパスも追加
+export PATH="$PATH:/Users/watanabekoichi/Library/Android/sdk/platform-tools"
 
 source $ZSH/oh-my-zsh.sh
 plugins+=(zsh-nvm)
@@ -147,6 +149,7 @@ alias gcm='git commit -m'
 alias gcm1='git commit -m 一旦コミット'
 
 alias gd='git diff' #ワーキングツリー（現在の作業状態）からインデックス（add済み）の差分＝編集中でaddしていないもの
+alias gvd='git difftool' #vimdiffでgit diffを表示
 alias gdh='git diff HEAD' #ワーキングツリー（現在の作業状態）からHEAD（前回のコミット）の差分
 alias gdh1='git diff HEAD^..HEAD' #HEAD（前回のコミット）からHEAD^（前々回のコミット）の差分
 alias gdh2='git diff HEAD^^..HEAD^' #HEAD（前々回のコミット）からHEAD^（前々々回のコミット）の差分
