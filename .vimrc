@@ -340,8 +340,6 @@ NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'ap/vim-css-color'
 NeoBundle 'elzr/vim-json'
 "-------------------------------------------------------------
-" JavaScriptのシンタックスハイライト
-NeoBundle 'pangloss/vim-javascript'
 
 "貼り付け時自動でpaste modeにする
 NeoBundle 'ConradIrwin/vim-bracketed-paste'
@@ -395,11 +393,6 @@ NeoBundle "kana/vim-textobj-user"
 NeoBundle 'kana/vim-textobj-entire'
 " 検索・置換を便利にするvim-abolish http://qiita.com/yuku_t/items/77a3361ff4d27bda641e
 NeoBundle 'tpope/vim-abolish'
-" RubocopをVimから実行するためのプラグイン http://qiita.com/yuku_t/items/0ac33cea18e10f14e185
-NeoBundle 'scrooloose/syntastic'
-let g:syntastic_mode_map = { 'mode': 'passive',
-            \ 'active_filetypes': ['ruby'] }
-let g:syntastic_ruby_checkers = ['rubocop']
 
 " markdownの設定。プレビューなど。######################################
 NeoBundle 'plasticboy/vim-markdown'
@@ -415,15 +408,34 @@ autocm BufEnter * if &filetype == "" || &filetype == "text" || &filetype == "txt
 
 " React native関連
 NeoBundle 'vim-syntastic/syntastic'
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
+NeoBundle 'pmsorhaindo/syntastic-local-eslint.vim'
+
+" syntasticのための設定
+let g:syntastic_javascript_checkers=['eslint']
+" rubocopもvimで自動チェック
+let g:syntastic_ruby_checkers = ['rubocop']
+
+" ここから下は Syntastic のおすすめの設定
+" ref. https://github.com/scrooloose/syntastic#settings
+
+" エラー行に sign を表示
+let g:syntastic_enable_signs = 1
+" location list を常に更新
+let g:syntastic_always_populate_loc_list = 0
+" location list を常に表示
 let g:syntastic_auto_loc_list = 1
+" ファイルを開いた時にチェックを実行する
 let g:syntastic_check_on_open = 1
+" :wq で終了する時もチェックする
 let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exe = 'npm run lint --'
+
+" JavaScriptのシンタックスハイライト
+" NeoBundle 'pangloss/vim-javascript' "↓のに移行
+NeoBundle 'othree/yajs.vim'
+" JSXのシンタックスハイライト
+NeoBundle 'maxmellon/vim-jsx-pretty'
+" JSコード補完
+NeoBundle 'marijnh/tern_for_vim'
 
 call neobundle#end()
 " @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@neobundle終了!

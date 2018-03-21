@@ -55,6 +55,11 @@ ZSH_THEME="crunch"
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
+# rbenv設定
+export PATH=/usr/local/bin:$PATH
+eval "$(rbenv init -)"
+
+
 source $ZSH/oh-my-zsh.sh
 plugins+=(zsh-nvm)
 # You may need to manually set your language environment
